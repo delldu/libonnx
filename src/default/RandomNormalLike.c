@@ -1,6 +1,6 @@
 #include <onnx.h>
 
-typedef struct operator_pdata_s {
+typedef struct {
   enum onnx_tensor_type_t dtype;
   float mean;
   float scale;

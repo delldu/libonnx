@@ -1,6 +1,6 @@
 #include <onnx.h>
 
-typedef struct operator_pdata_s {
+typedef struct {
   int *axes;
   int naxes;
   int keepdims;

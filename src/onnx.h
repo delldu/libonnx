@@ -36,6 +36,8 @@ extern "C" {
 #define LIBONNX_VERSION                                                        \
   ((LIBONNX_MAJOY * 10000) + (LIBONNX_MINIOR * 100) + LIBONNX_PATCH)
 
+#define EMPTY_OPERATOR() printf("Empty Operator %s at: %d(%s): \n", __FUNCTION__ , (int)__LINE__, __FILE__)
+
 struct onnx_tensor_s;
 struct onnx_node_s;
 struct onnx_graph_s;
