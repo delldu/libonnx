@@ -17,6 +17,10 @@ ASFLAGS		:= -g -ggdb -Wall -O3
 CFLAGS		:= -g -ggdb -Wall -O3
 CXXFLAGS	:= -g -ggdb -Wall -O3
 INCDIRS		:= -I .
+ifdef CONFIG_ENABLE_CUDA
+INCDIRS		+= -I/usr/local/cuda-10.2/include
+CFLAGS		+= -D CONFIG_ENABLE_CUDA=1
+endif
 SRCDIRS		:= . default
 
 SFILES		:= $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.S))

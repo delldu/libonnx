@@ -8,6 +8,29 @@ extern "C" {
 #include <onnxconf.h>
 #include <onnx.proto3.pb-c.h>
 
+#ifdef CONFIG_ENABLE_CUDA
+	#include <cuda_runtime.h>
+
+	#define CUDA_DRIVER_CALL(x)                                             \
+	  {                                                                     \
+	    CUresult result = x;                                                \
+	    if (result != CUDA_SUCCESS && result != CUDA_ERROR_DEINITIALIZED) { \
+	      const char* msg;                                                  \
+	      cuGetErrorName(result, &msg);                                     \
+	      LOG(FATAL) << "CUDAError: " #x " failed with error: " << msg;     \
+	    }                                                                   \
+	  }
+
+	#define CUDA_CALL(func)                                       \
+	  {                                                           \
+	    cudaError_t e = (func);                                   \
+	    ICHECK(e == cudaSuccess || e == cudaErrorCudartUnloading) \
+	        << "CUDA: " << cudaGetErrorString(e);                 \
+	  }
+
+#endif
+
+
 #define LIBONNX_MAJOY			(1)
 #define LIBONNX_MINIOR			(0)
 #define LIBONNX_PATCH			(0)
