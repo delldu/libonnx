@@ -104,7 +104,7 @@ typedef struct onnx_context_s {
   void **rctx;
   int rlen;
   struct onnx_graph_s *g;
-} onnx_context_t;
+} onnx_context_t; // xxxx8888 -- onnx_model_t
 
 typedef struct onnx_resolver_s {
   const char *name;
