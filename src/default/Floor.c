@@ -62,30 +62,22 @@ static void Floor_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Floor(onnx_node_t *n) {
+  n->init = Floor_init;
+  n->exit = Floor_exit;
+  n->reshape = Floor_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float64;
       break;
     default:
@@ -94,21 +86,12 @@ void resolver_default_op_Floor(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float64;
       break;
     default:
@@ -117,21 +100,12 @@ void resolver_default_op_Floor(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Floor_init;
-      n->exit = Floor_exit;
-      n->reshape = Floor_reshape;
       n->operator= Floor_float64;
       break;
     default:

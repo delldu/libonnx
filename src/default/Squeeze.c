@@ -92,6 +92,8 @@ void resolver_default_op_Squeeze(onnx_node_t *n) {
       break;
     }
   } else if (n->opset >= 11) {
+    EMPTY_OPERATOR();
   } else if (n->opset >= 1) {
+    EMPTY_OPERATOR();
   }
 }

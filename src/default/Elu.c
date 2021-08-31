@@ -70,24 +70,19 @@ static void Elu_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Elu(onnx_node_t *n) {
+  n->init = Elu_init;
+  n->exit = Elu_exit;
+  n->reshape = Elu_reshape;
+
   if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float64;
       break;
     default:
@@ -96,21 +91,12 @@ void resolver_default_op_Elu(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Elu_init;
-      n->exit = Elu_exit;
-      n->reshape = Elu_reshape;
       n->operator= Elu_float64;
       break;
     default:

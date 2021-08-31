@@ -49,24 +49,19 @@ static void Cos_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Cos(onnx_node_t *n) {
+  n->init = Cos_init;
+  n->exit = Cos_exit;
+  n->reshape = Cos_reshape;
+
   if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Cos_init;
-      n->exit = Cos_exit;
-      n->reshape = Cos_reshape;
       n->operator= Cos_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Cos_init;
-      n->exit = Cos_exit;
-      n->reshape = Cos_reshape;
       n->operator= Cos_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Cos_init;
-      n->exit = Cos_exit;
-      n->reshape = Cos_reshape;
       n->operator= Cos_float64;
       break;
     default:

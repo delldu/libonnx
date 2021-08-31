@@ -110,24 +110,19 @@ static void GlobalLpPool_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_GlobalLpPool(onnx_node_t *n) {
+  n->init = GlobalLpPool_init;
+  n->exit = GlobalLpPool_exit;
+  n->reshape = GlobalLpPool_reshape;
+
   if (n->opset >= 2) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float64;
       break;
     default:
@@ -136,21 +131,12 @@ void resolver_default_op_GlobalLpPool(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = GlobalLpPool_init;
-      n->exit = GlobalLpPool_exit;
-      n->reshape = GlobalLpPool_reshape;
       n->operator= GlobalLpPool_float64;
       break;
     default:

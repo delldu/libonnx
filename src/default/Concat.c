@@ -112,6 +112,10 @@ static void Concat_operator(onnx_node_t *n) {
 }
 
 void resolver_default_op_Concat(onnx_node_t *n) {
+  n->init = Concat_init;
+  n->exit = Concat_exit;
+  n->reshape = Concat_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BOOL:
@@ -130,9 +134,6 @@ void resolver_default_op_Concat(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Concat_init;
-      n->exit = Concat_exit;
-      n->reshape = Concat_reshape;
       n->operator= Concat_operator;
       break;
     default:
@@ -155,9 +156,6 @@ void resolver_default_op_Concat(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Concat_init;
-      n->exit = Concat_exit;
-      n->reshape = Concat_reshape;
       n->operator= Concat_operator;
       break;
     default:
@@ -180,9 +178,6 @@ void resolver_default_op_Concat(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Concat_init;
-      n->exit = Concat_exit;
-      n->reshape = Concat_reshape;
       n->operator= Concat_operator;
       break;
     default:
@@ -193,9 +188,6 @@ void resolver_default_op_Concat(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_FLOAT16:
     case ONNX_TENSOR_TYPE_FLOAT32:
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Concat_init;
-      n->exit = Concat_exit;
-      n->reshape = Concat_reshape;
       n->operator= Concat_operator;
       break;
     default:

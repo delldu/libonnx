@@ -935,54 +935,34 @@ static void Gemm_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Gemm(onnx_node_t *n) {
+  n->init = Gemm_init;
+  n->exit = Gemm_exit;
+  n->reshape = Gemm_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint64;
       break;
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float64;
       break;
     default:
@@ -991,45 +971,24 @@ void resolver_default_op_Gemm(onnx_node_t *n) {
   } else if (n->opset >= 11) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint64;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float64;
       break;
     default:
@@ -1038,45 +997,24 @@ void resolver_default_op_Gemm(onnx_node_t *n) {
   } else if (n->opset >= 9) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_uint64;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float64;
       break;
     default:
@@ -1085,27 +1023,20 @@ void resolver_default_op_Gemm(onnx_node_t *n) {
   } else if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Gemm_init;
-      n->exit = Gemm_exit;
-      n->reshape = Gemm_reshape;
       n->operator= Gemm_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 6) {
+    EMPTY_OPERATOR();
   } else if (n->opset >= 1) {
+    EMPTY_OPERATOR();
   }
 }

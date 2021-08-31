@@ -49,24 +49,19 @@ static void Softplus_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Softplus(onnx_node_t *n) {
+  n->init = Softplus_init;
+  n->exit = Softplus_exit;
+  n->reshape = Softplus_reshape;
+
   if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Softplus_init;
-      n->exit = Softplus_exit;
-      n->reshape = Softplus_reshape;
       n->operator= Softplus_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Softplus_init;
-      n->exit = Softplus_exit;
-      n->reshape = Softplus_reshape;
       n->operator= Softplus_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Softplus_init;
-      n->exit = Softplus_exit;
-      n->reshape = Softplus_reshape;
       n->operator= Softplus_float64;
       break;
     default:

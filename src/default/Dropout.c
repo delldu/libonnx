@@ -56,30 +56,22 @@ static void Dropout_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Dropout(onnx_node_t *n) {
+  n->init = Dropout_init;
+  n->exit = Dropout_exit;
+  n->reshape = Dropout_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:
@@ -88,21 +80,12 @@ void resolver_default_op_Dropout(onnx_node_t *n) {
   } else if (n->opset >= 12) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:
@@ -111,21 +94,12 @@ void resolver_default_op_Dropout(onnx_node_t *n) {
   } else if (n->opset >= 10) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:
@@ -134,21 +108,12 @@ void resolver_default_op_Dropout(onnx_node_t *n) {
   } else if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:
@@ -157,21 +122,12 @@ void resolver_default_op_Dropout(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:
@@ -180,21 +136,12 @@ void resolver_default_op_Dropout(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Dropout_init;
-      n->exit = Dropout_exit;
-      n->reshape = Dropout_reshape;
       n->operator= Dropout_float64;
       break;
     default:

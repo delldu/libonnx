@@ -49,24 +49,19 @@ static void Tan_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Tan(onnx_node_t *n) {
+  n->init = Tan_init;
+  n->exit = Tan_exit;
+  n->reshape = Tan_reshape;
+
   if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Tan_init;
-      n->exit = Tan_exit;
-      n->reshape = Tan_reshape;
       n->operator= Tan_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Tan_init;
-      n->exit = Tan_exit;
-      n->reshape = Tan_reshape;
       n->operator= Tan_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Tan_init;
-      n->exit = Tan_exit;
-      n->reshape = Tan_reshape;
       n->operator= Tan_float64;
       break;
     default:

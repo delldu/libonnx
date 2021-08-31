@@ -69,6 +69,10 @@ static void Flatten_operator(onnx_node_t *n) {
 }
 
 void resolver_default_op_Flatten(onnx_node_t *n) {
+  n->init = Flatten_init;
+  n->exit = Flatten_exit;
+  n->reshape = Flatten_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BOOL:
@@ -87,9 +91,6 @@ void resolver_default_op_Flatten(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Flatten_init;
-      n->exit = Flatten_exit;
-      n->reshape = Flatten_reshape;
       n->operator= Flatten_operator;
       break;
     default:
@@ -112,9 +113,6 @@ void resolver_default_op_Flatten(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Flatten_init;
-      n->exit = Flatten_exit;
-      n->reshape = Flatten_reshape;
       n->operator= Flatten_operator;
       break;
     default:
@@ -137,9 +135,6 @@ void resolver_default_op_Flatten(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Flatten_init;
-      n->exit = Flatten_exit;
-      n->reshape = Flatten_reshape;
       n->operator= Flatten_operator;
       break;
     default:
@@ -150,9 +145,6 @@ void resolver_default_op_Flatten(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_FLOAT16:
     case ONNX_TENSOR_TYPE_FLOAT32:
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Flatten_init;
-      n->exit = Flatten_exit;
-      n->reshape = Flatten_reshape;
       n->operator= Flatten_operator;
       break;
     default:

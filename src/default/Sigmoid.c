@@ -76,30 +76,22 @@ static void Sigmoid_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Sigmoid(onnx_node_t *n) {
+  n->init = Sigmoid_init;
+  n->exit = Sigmoid_exit;
+  n->reshape = Sigmoid_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float64;
       break;
     default:
@@ -108,21 +100,12 @@ void resolver_default_op_Sigmoid(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float64;
       break;
     default:
@@ -131,21 +114,12 @@ void resolver_default_op_Sigmoid(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Sigmoid_init;
-      n->exit = Sigmoid_exit;
-      n->reshape = Sigmoid_reshape;
       n->operator= Sigmoid_float64;
       break;
     default:

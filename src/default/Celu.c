@@ -47,12 +47,13 @@ static void Celu_float32(onnx_node_t *n) {
 }
 
 void resolver_default_op_Celu(onnx_node_t *n) {
+  n->init = Celu_init;
+  n->exit = Celu_exit;
+  n->reshape = Celu_reshape;
+
   if (n->opset >= 12) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Celu_init;
-      n->exit = Celu_exit;
-      n->reshape = Celu_reshape;
       n->operator= Celu_float32;
       break;
     default:

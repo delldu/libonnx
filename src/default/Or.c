@@ -44,5 +44,6 @@ void resolver_default_op_Or(onnx_node_t *n) {
       break;
     }
   } else if (n->opset >= 1) {
+    EMPTY_OPERATOR();
   }
 }

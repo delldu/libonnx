@@ -62,30 +62,22 @@ static void Exp_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Exp(onnx_node_t *n) {
+  n->init = Exp_init;
+  n->exit = Exp_exit;
+  n->reshape = Exp_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float64;
       break;
     default:
@@ -94,21 +86,12 @@ void resolver_default_op_Exp(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float64;
       break;
     default:
@@ -117,21 +100,12 @@ void resolver_default_op_Exp(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Exp_init;
-      n->exit = Exp_exit;
-      n->reshape = Exp_reshape;
       n->operator= Exp_float64;
       break;
     default:

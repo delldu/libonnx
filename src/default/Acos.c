@@ -49,24 +49,19 @@ static void Acos_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Acos(onnx_node_t *n) {
+  n->init = Acos_init;
+  n->exit = Acos_exit;
+  n->reshape = Acos_reshape;
+
   if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Acos_init;
-      n->exit = Acos_exit;
-      n->reshape = Acos_reshape;
       n->operator= Acos_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Acos_init;
-      n->exit = Acos_exit;
-      n->reshape = Acos_reshape;
       n->operator= Acos_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Acos_init;
-      n->exit = Acos_exit;
-      n->reshape = Acos_reshape;
       n->operator= Acos_float64;
       break;
     default:

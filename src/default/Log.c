@@ -62,30 +62,22 @@ static void Log_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Log(onnx_node_t *n) {
+  n->init = Log_init;
+  n->exit = Log_exit;
+  n->reshape = Log_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float64;
       break;
     default:
@@ -94,21 +86,12 @@ void resolver_default_op_Log(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float64;
       break;
     default:
@@ -117,21 +100,12 @@ void resolver_default_op_Log(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Log_init;
-      n->exit = Log_exit;
-      n->reshape = Log_reshape;
       n->operator= Log_float64;
       break;
     default:

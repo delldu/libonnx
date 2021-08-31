@@ -52,24 +52,19 @@ static void Acosh_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Acosh(onnx_node_t *n) {
+  n->init = Acosh_init;
+  n->exit = Acosh_exit;
+  n->reshape = Acosh_reshape;
+
   if (n->opset >= 9) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Acosh_init;
-      n->exit = Acosh_exit;
-      n->reshape = Acosh_reshape;
       n->operator= Acosh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Acosh_init;
-      n->exit = Acosh_exit;
-      n->reshape = Acosh_reshape;
       n->operator= Acosh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Acosh_init;
-      n->exit = Acosh_exit;
-      n->reshape = Acosh_reshape;
       n->operator= Acosh_float64;
       break;
     default:

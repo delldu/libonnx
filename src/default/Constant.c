@@ -94,30 +94,19 @@ static int Constant_reshape(onnx_node_t *n) { return 1; }
 static void Constant_operator(onnx_node_t *n) {}
 
 void resolver_default_op_Constant(onnx_node_t *n) {
+  n->init = Constant_init;
+  n->exit = Constant_exit;
+  n->reshape = Constant_reshape;
+
   if (n->opset >= 13) {
-    n->init = Constant_init;
-    n->exit = Constant_exit;
-    n->reshape = Constant_reshape;
     n->operator= Constant_operator;
   } else if (n->opset >= 12) {
-    n->init = Constant_init;
-    n->exit = Constant_exit;
-    n->reshape = Constant_reshape;
     n->operator= Constant_operator;
   } else if (n->opset >= 11) {
-    n->init = Constant_init;
-    n->exit = Constant_exit;
-    n->reshape = Constant_reshape;
     n->operator= Constant_operator;
   } else if (n->opset >= 9) {
-    n->init = Constant_init;
-    n->exit = Constant_exit;
-    n->reshape = Constant_reshape;
     n->operator= Constant_operator;
   } else if (n->opset >= 1) {
-    n->init = Constant_init;
-    n->exit = Constant_exit;
-    n->reshape = Constant_reshape;
     n->operator= Constant_operator;
   }
 }

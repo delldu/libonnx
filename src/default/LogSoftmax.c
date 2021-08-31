@@ -321,75 +321,57 @@ static void LogSoftmax_1_11_float64(onnx_node_t *n) {
 
 void resolver_default_op_LogSoftmax(onnx_node_t *n) {
   if (n->opset >= 13) {
+    n->init = LogSoftmax_13_init;
+    n->exit = LogSoftmax_13_exit;
+    n->reshape = LogSoftmax_13_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = LogSoftmax_13_init;
-      n->exit = LogSoftmax_13_exit;
-      n->reshape = LogSoftmax_13_reshape;
       n->operator= LogSoftmax_13_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = LogSoftmax_13_init;
-      n->exit = LogSoftmax_13_exit;
-      n->reshape = LogSoftmax_13_reshape;
       n->operator= LogSoftmax_13_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = LogSoftmax_13_init;
-      n->exit = LogSoftmax_13_exit;
-      n->reshape = LogSoftmax_13_reshape;
       n->operator= LogSoftmax_13_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = LogSoftmax_13_init;
-      n->exit = LogSoftmax_13_exit;
-      n->reshape = LogSoftmax_13_reshape;
       n->operator= LogSoftmax_13_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 11) {
+    n->init = LogSoftmax_1_11_init;
+    n->exit = LogSoftmax_1_11_exit;
+    n->reshape = LogSoftmax_1_11_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 1) {
+    n->init = LogSoftmax_1_11_init;
+    n->exit = LogSoftmax_1_11_exit;
+    n->reshape = LogSoftmax_1_11_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = LogSoftmax_1_11_init;
-      n->exit = LogSoftmax_1_11_exit;
-      n->reshape = LogSoftmax_1_11_reshape;
       n->operator= LogSoftmax_1_11_float64;
       break;
     default:

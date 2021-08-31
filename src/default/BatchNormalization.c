@@ -134,25 +134,21 @@ static void BatchNormalization_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_BatchNormalization(onnx_node_t *n) {
+  n->init = BatchNormalization_init;
+  n->exit = BatchNormalization_exit;
+  n->reshape = BatchNormalization_reshape;
+
   if (n->opset >= 14) {
+    EMPTY_OPERATOR();
   } else if (n->opset >= 9) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float64;
       break;
     default:
@@ -161,27 +157,20 @@ void resolver_default_op_BatchNormalization(onnx_node_t *n) {
   } else if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = BatchNormalization_init;
-      n->exit = BatchNormalization_exit;
-      n->reshape = BatchNormalization_reshape;
       n->operator= BatchNormalization_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 6) {
+    EMPTY_OPERATOR();
   } else if (n->opset >= 1) {
+    EMPTY_OPERATOR();
   }
 }

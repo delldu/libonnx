@@ -33,6 +33,10 @@ static void Identity_operator(onnx_node_t *n) {
 }
 
 void resolver_default_op_Identity(onnx_node_t *n) {
+  n->init = Identity_init;
+  n->exit = Identity_exit;
+  n->reshape = Identity_reshape;
+
   if (n->opset >= 14) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BOOL:
@@ -51,9 +55,6 @@ void resolver_default_op_Identity(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Identity_init;
-      n->exit = Identity_exit;
-      n->reshape = Identity_reshape;
       n->operator= Identity_operator;
       break;
     default:
@@ -77,9 +78,6 @@ void resolver_default_op_Identity(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Identity_init;
-      n->exit = Identity_exit;
-      n->reshape = Identity_reshape;
       n->operator= Identity_operator;
       break;
     default:
@@ -102,9 +100,6 @@ void resolver_default_op_Identity(onnx_node_t *n) {
     case ONNX_TENSOR_TYPE_COMPLEX64:
     case ONNX_TENSOR_TYPE_COMPLEX128:
     case ONNX_TENSOR_TYPE_STRING:
-      n->init = Identity_init;
-      n->exit = Identity_exit;
-      n->reshape = Identity_reshape;
       n->operator= Identity_operator;
       break;
     default:

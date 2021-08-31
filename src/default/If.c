@@ -110,20 +110,15 @@ static void If_operator(onnx_node_t *n) {
 }
 
 void resolver_default_op_If(onnx_node_t *n) {
+  n->init = If_init;
+  n->exit = If_exit;
+  n->reshape = If_reshape;
+
   if (n->opset >= 13) {
-    n->init = If_init;
-    n->exit = If_exit;
-    n->reshape = If_reshape;
     n->operator= If_operator;
   } else if (n->opset >= 11) {
-    n->init = If_init;
-    n->exit = If_exit;
-    n->reshape = If_reshape;
     n->operator= If_operator;
   } else if (n->opset >= 1) {
-    n->init = If_init;
-    n->exit = If_exit;
-    n->reshape = If_reshape;
     n->operator= If_operator;
   }
 }

@@ -62,30 +62,22 @@ static void Tanh_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Tanh(onnx_node_t *n) {
+  n->init = Tanh_init;
+  n->exit = Tanh_exit;
+  n->reshape = Tanh_reshape;
+
   if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float64;
       break;
     default:
@@ -94,21 +86,12 @@ void resolver_default_op_Tanh(onnx_node_t *n) {
   } else if (n->opset >= 6) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float64;
       break;
     default:
@@ -117,21 +100,12 @@ void resolver_default_op_Tanh(onnx_node_t *n) {
   } else if (n->opset >= 1) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Tanh_init;
-      n->exit = Tanh_exit;
-      n->reshape = Tanh_reshape;
       n->operator= Tanh_float64;
       break;
     default:

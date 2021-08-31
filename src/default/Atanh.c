@@ -49,24 +49,19 @@ static void Atanh_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Atanh(onnx_node_t *n) {
+  n->init = Atanh_init;
+  n->exit = Atanh_exit;
+  n->reshape = Atanh_reshape;
+
   if (n->opset >= 9) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Atanh_init;
-      n->exit = Atanh_exit;
-      n->reshape = Atanh_reshape;
       n->operator= Atanh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Atanh_init;
-      n->exit = Atanh_exit;
-      n->reshape = Atanh_reshape;
       n->operator= Atanh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Atanh_init;
-      n->exit = Atanh_exit;
-      n->reshape = Atanh_reshape;
       n->operator= Atanh_float64;
       break;
     default:

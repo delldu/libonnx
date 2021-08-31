@@ -49,24 +49,19 @@ static void Atan_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Atan(onnx_node_t *n) {
+  n->init = Atan_init;
+  n->exit = Atan_exit;
+  n->reshape = Atan_reshape;
+
   if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Atan_init;
-      n->exit = Atan_exit;
-      n->reshape = Atan_reshape;
       n->operator= Atan_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Atan_init;
-      n->exit = Atan_exit;
-      n->reshape = Atan_reshape;
       n->operator= Atan_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Atan_init;
-      n->exit = Atan_exit;
-      n->reshape = Atan_reshape;
       n->operator= Atan_float64;
       break;
     default:

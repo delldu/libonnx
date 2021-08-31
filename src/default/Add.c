@@ -199,78 +199,46 @@ static void Add_13_bfloat16(onnx_node_t *n) {
 }
 
 void resolver_default_op_Add(onnx_node_t *n) {
+  n->init = Add_init;
+  n->exit = Add_exit;
+  n->reshape = Add_reshape;
+
   if (n->opset >= 14) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT8:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int8;
       break;
     case ONNX_TENSOR_TYPE_INT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int16;
       break;
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT8:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint8;
       break;
     case ONNX_TENSOR_TYPE_UINT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint16;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint64;
       break;
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_13_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float64;
       break;
     default:
@@ -279,51 +247,27 @@ void resolver_default_op_Add(onnx_node_t *n) {
   } else if (n->opset >= 13) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint64;
       break;
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_13_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float64;
       break;
     default:
@@ -332,45 +276,24 @@ void resolver_default_op_Add(onnx_node_t *n) {
   } else if (n->opset >= 7) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_INT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int32;
       break;
     case ONNX_TENSOR_TYPE_INT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_int64;
       break;
     case ONNX_TENSOR_TYPE_UINT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint32;
       break;
     case ONNX_TENSOR_TYPE_UINT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_uint64;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Add_init;
-      n->exit = Add_exit;
-      n->reshape = Add_reshape;
       n->operator= Add_float64;
       break;
     default:

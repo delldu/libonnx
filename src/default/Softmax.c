@@ -321,75 +321,57 @@ static void Softmax_1_11_float64(onnx_node_t *n) {
 
 void resolver_default_op_Softmax(onnx_node_t *n) {
   if (n->opset >= 13) {
+    n->init = Softmax_13_init;
+    n->exit = Softmax_13_exit;
+    n->reshape = Softmax_13_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_BFLOAT16:
-      n->init = Softmax_13_init;
-      n->exit = Softmax_13_exit;
-      n->reshape = Softmax_13_reshape;
       n->operator= Softmax_13_bfloat16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Softmax_13_init;
-      n->exit = Softmax_13_exit;
-      n->reshape = Softmax_13_reshape;
       n->operator= Softmax_13_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Softmax_13_init;
-      n->exit = Softmax_13_exit;
-      n->reshape = Softmax_13_reshape;
       n->operator= Softmax_13_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Softmax_13_init;
-      n->exit = Softmax_13_exit;
-      n->reshape = Softmax_13_reshape;
       n->operator= Softmax_13_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 11) {
+    n->init = Softmax_1_11_init;
+    n->exit = Softmax_1_11_exit;
+    n->reshape = Softmax_1_11_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float64;
       break;
     default:
       break;
     }
   } else if (n->opset >= 1) {
+    n->init = Softmax_1_11_init;
+    n->exit = Softmax_1_11_exit;
+    n->reshape = Softmax_1_11_reshape;
+
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Softmax_1_11_init;
-      n->exit = Softmax_1_11_exit;
-      n->reshape = Softmax_1_11_reshape;
       n->operator= Softmax_1_11_float64;
       break;
     default:

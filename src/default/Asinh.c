@@ -49,24 +49,19 @@ static void Asinh_float64(onnx_node_t *n) {
 }
 
 void resolver_default_op_Asinh(onnx_node_t *n) {
+  n->init = Asinh_init;
+  n->exit = Asinh_exit;
+  n->reshape = Asinh_reshape;
+
   if (n->opset >= 9) {
     switch (n->inputs[0]->type) {
     case ONNX_TENSOR_TYPE_FLOAT16:
-      n->init = Asinh_init;
-      n->exit = Asinh_exit;
-      n->reshape = Asinh_reshape;
       n->operator= Asinh_float16;
       break;
     case ONNX_TENSOR_TYPE_FLOAT32:
-      n->init = Asinh_init;
-      n->exit = Asinh_exit;
-      n->reshape = Asinh_reshape;
       n->operator= Asinh_float32;
       break;
     case ONNX_TENSOR_TYPE_FLOAT64:
-      n->init = Asinh_init;
-      n->exit = Asinh_exit;
-      n->reshape = Asinh_reshape;
       n->operator= Asinh_float64;
       break;
     default:
