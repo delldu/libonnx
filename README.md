@@ -39,7 +39,10 @@ Just type `make` at the root directory, you will see a static library and some b
 ```shell
 cd libonnx
 make
+or
+make CONFIG_ENABLE_CUDA=1
 ```
+
 
 ## Screenshots
 * [Mnist handwritten digit prediction](examples/mnist)
